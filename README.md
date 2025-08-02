@@ -26,3 +26,7 @@
 - Python
 - Unity Hub
 - Vs Community
+
+
+#Tarea 1
+Cree la clase .2D con dos variables, 2 atributos llamados x e y, con lo que sabemos, constructor y serializada, grabela o package it in a different package 
