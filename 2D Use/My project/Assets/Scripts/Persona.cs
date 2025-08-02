@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class Persona : MonoBehaviour
+namespace PackagePersona
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Persona
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private string nameP;
+        private int mailP;
+        private int dirP;
+        public Persona(string nameP, int mailP, int dirP)
+        {
+            this.nameP = nameP;
+            this.mailP = mailP;
+            this.dirP = dirP;
+        }
     }
 }
