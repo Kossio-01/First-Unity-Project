@@ -1,40 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-namespace PackagePersona
+namespace PackagesPesona
 {
+    [System.Serializable]
     public class Estudiante : Persona
     {
-        private string _code;
-        private string _nameCarrera;
+        private string CodeE;
+        private string nameCarreraE;
 
-        public string Code
+        public Estudiante() { }
+
+        public Estudiante(string codeE, string nameCarreraE)
         {
-            get => _code;
-            set => _code = value;
+            this.CodeE = codeE;
+            this.nameCarreraE = nameCarreraE;
         }
 
-        public string NameCarrera
+        public Estudiante(string nameP, int mailP, int dirP) : base(nameP, mailP, dirP)
         {
-            get => _nameCarrera;
-            set => _nameCarrera = value;
-        }
-       
-
-        // Si Persona tiene un constructor con parámetros, llama a base(...)
-        public Estudiante(string code, string nameCarrera, string nameP)
-        {
-            _code = code;
-            _nameCarrera = nameCarrera;
         }
 
-        // Si necesitas pasar parámetros a Persona, descomenta y ajusta:
-        // public Estudiante(string code, string nameCarrera, string nameP, string mailP, string dirP)
-        //     : base(nameP, mailP, dirP)
-        // {
-        //     _code = code;
-        //     _nameCarrera = nameCarrera;
-        // }
+        public string CodeEProp { get => CodeE; set => CodeE = value; }
+        public string NameCarreraEProp { get => nameCarreraE; set => nameCarreraE = value; }
     }
 }

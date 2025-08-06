@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using PackagePersona;
+
 public class UsarPersona : MonoBehaviour
 {
-
-    List<Estudiante> ListaE=new List<Estudiante>();
+    // Start is called before the first frame update
     void Start()
     {
-        Estudiante e1 = new Estudiante("12345", "Ingeniería de Software", "David", "CoreeoQgenerico");
+        Debug.Log("Creando una instancia de Persona");
     }
 
     // Update is called once per frame
