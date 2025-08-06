@@ -8,11 +8,12 @@ namespace PackagesPesona
     public class Persona
     {
         private string nameP;
-        private int mailP;
-        private int dirP;
+        private string mailP;  // Mantener como string
+        private string dirP;   // Mantener como string
 
-    public Persona(){}
-        public Persona(string nameP, int mailP, int dirP)
+        public Persona(){}
+        
+        public Persona(string nameP, string mailP, string dirP)
         {
             this.nameP = nameP;
             this.mailP = mailP;
@@ -20,7 +21,7 @@ namespace PackagesPesona
         }
 
         public string NameP { get => nameP; set => nameP = value; }
-        public int MailP { get => mailP; set => mailP = value; }
-        public int DirP { get => dirP; set => dirP = value; }
+        public string MailP { get => mailP; set => mailP = value; }
+        public string DirP { get => dirP; set => dirP = value; }
     }
 }

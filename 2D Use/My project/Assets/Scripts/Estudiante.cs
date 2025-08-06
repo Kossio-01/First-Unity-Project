@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace PackagesPesona
 {
     [System.Serializable]
@@ -17,11 +18,11 @@ namespace PackagesPesona
             this.nameCarreraE = nameCarreraE;
         }
 
-        public Estudiante(string nameP, int mailP, int dirP) : base(nameP, mailP, dirP)
+        public Estudiante(string nameP, string mailP, string dirP) : base(nameP, mailP, dirP)
         {
         }
 
-        public Estudiante(string nameP, int mailP, int dirP, string codeE, string nameCarreraE) 
+        public Estudiante(string nameP, string mailP, string dirP, string codeE, string nameCarreraE) 
             : base(nameP, mailP, dirP)
         {
             this.CodeE = codeE;
