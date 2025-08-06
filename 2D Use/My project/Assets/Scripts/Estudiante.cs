@@ -21,6 +21,13 @@ namespace PackagesPesona
         {
         }
 
+        public Estudiante(string nameP, int mailP, int dirP, string codeE, string nameCarreraE) 
+            : base(nameP, mailP, dirP)
+        {
+            this.CodeE = codeE;
+            this.nameCarreraE = nameCarreraE;
+        }
+
         public string CodeEProp { get => CodeE; set => CodeE = value; }
         public string NameCarreraEProp { get => nameCarreraE; set => nameCarreraE = value; }
     }
