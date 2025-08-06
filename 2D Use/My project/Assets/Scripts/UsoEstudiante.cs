@@ -27,7 +27,7 @@ public class UsoEstudiante : MonoBehaviour
     
     void Start()
     {
-        // Crear estudiantes de prueba
+        // Crear estudiantes genericos
         Estudiante e1 = new Estudiante("Juan", "123456789", "20", "E001", "Ingeniería");
         Estudiante e2 = new Estudiante("Ana", "987654321", "21", "E002", "Medicina");
         Estudiante e3 = new Estudiante("Luis", "456789123", "22", "E003", "Arquitectura");
@@ -36,7 +36,7 @@ public class UsoEstudiante : MonoBehaviour
         ListaE.Add(e2);
         ListaE.Add(e3);
 
-        // Configurar botón
+        //  botón
         if (btnAgregar != null)
             btnAgregar.onClick.AddListener(AgregarEstudianteFromUI);
 
@@ -51,7 +51,7 @@ public class UsoEstudiante : MonoBehaviour
         if (inputNombre != null && inputCodigo != null && 
             !string.IsNullOrEmpty(inputNombre.text) && !string.IsNullOrEmpty(inputCodigo.text))
         {
-            // Validar que mail sea número si no está vacío
+            // Validar 
             if (!string.IsNullOrEmpty(inputMail.text))
             {
                 if (!int.TryParse(inputMail.text, out _))
@@ -60,8 +60,7 @@ public class UsoEstudiante : MonoBehaviour
                     return;
                 }
             }
-            
-            // Validar que dirección sea número si no está vacío
+             
             if (!string.IsNullOrEmpty(inputDireccion.text))
             {
                 if (!int.TryParse(inputDireccion.text, out _))
@@ -82,7 +81,7 @@ public class UsoEstudiante : MonoBehaviour
             ListaE.Add(nuevoEstudiante);
             Debug.Log($"Estudiante agregado: {inputNombre.text}");
             
-            // Limpiar campos
+            // Crear Clear
             inputNombre.text = "";
             inputMail.text = "";
             inputDireccion.text = "";

@@ -45,7 +45,6 @@ public static class Utilidades
         Debug.Log($"JSON generado:\n{json}");
     }
 
-    // ✅ MÉTODOS FALTANTES - AGREGAR ESTOS:
     public static List<Estudiante> CargarEstudiantesJSON()
     {
         string path = Path.Combine(Application.persistentDataPath, "estudiantes.json");
