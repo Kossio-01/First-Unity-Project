@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using PackagesPunto2D;
+using UnityEngine.Serialization;
 
 public class UsoPunto2D : MonoBehaviour
 {
@@ -12,8 +11,8 @@ public class UsoPunto2D : MonoBehaviour
     public TMP_InputField inputY;
     public Button btnAgregar;
 
-    [Header("Lista de Puntos")]
-    public List<Punto2D> ListaPuntos = new List<Punto2D>();
+    [FormerlySerializedAs("ListaPuntos")] [Header("Lista de Puntos")]
+    public List<Punto2D> listaPuntos = new List<Punto2D>();
 
     void Start()
     {
@@ -22,15 +21,15 @@ public class UsoPunto2D : MonoBehaviour
         Punto2D p2 = new Punto2D(-3.2f, 4.8f);
         Punto2D p3 = new Punto2D(0.0f, -1.5f);
 
-        ListaPuntos.Add(p1);
-        ListaPuntos.Add(p2);
-        ListaPuntos.Add(p3);
+        listaPuntos.Add(p1);
+        listaPuntos.Add(p2);
+        listaPuntos.Add(p3);
 
         // Configurar botón
         if (btnAgregar != null)
             btnAgregar.onClick.AddListener(AgregarPuntoFromUI);
 
-        foreach (Punto2D p in ListaPuntos)
+        foreach (Punto2D p in listaPuntos)
         {
             Debug.Log($"Punto: X={p.X}, Y={p.Y}");
         }
@@ -45,7 +44,7 @@ public class UsoPunto2D : MonoBehaviour
             float y = float.Parse(inputY.text);
             
             Punto2D nuevoPunto = new Punto2D(x, y);
-            ListaPuntos.Add(nuevoPunto);
+            listaPuntos.Add(nuevoPunto);
             Debug.Log($"Punto agregado: ({x}, {y})");
             
             // Limpiar campos
@@ -55,20 +54,15 @@ public class UsoPunto2D : MonoBehaviour
     }
 
     [ContextMenu("Guardar Puntos en JSON")]
-    public void GuardarJSON()
+    public void GuardarJson()
     {
-        Utilidades.GuardarPuntosJSON(ListaPuntos);
+        Utilidades.GuardarPuntosJson(listaPuntos);
     }
 
     [ContextMenu("Cargar Puntos desde JSON")]
-    public void CargarJSON()
+    public void CargarJson()
     {
-        ListaPuntos = Utilidades.CargarPuntosJSON();
-        Debug.Log($"Cargados {ListaPuntos.Count} puntos desde JSON");
-    }
-
-    void Update()
-    {
-        
+        listaPuntos = Utilidades.CargarPuntosJson();
+        Debug.Log($"Cargados {listaPuntos.Count} puntos desde JSON");
     }
 }

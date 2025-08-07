@@ -1,9 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using PackagesPesona;
-using PackagesPunto2D;
 
 [System.Serializable]
 public class EstudiantesData
@@ -19,7 +16,7 @@ public class PuntosData
 
 public static class Utilidades
 {
-    public static void GuardarEstudiantesJSON(List<Estudiante> listaEstudiantes)
+    public static void GuardarEstudiantesJson(List<Estudiante> listaEstudiantes)
     {
         EstudiantesData data = new EstudiantesData();
         data.estudiantes = listaEstudiantes;
@@ -32,7 +29,7 @@ public static class Utilidades
         Debug.Log($"JSON generado:\n{json}");
     }
 
-    public static void GuardarPuntosJSON(List<Punto2D> listaPuntos)
+    public static void GuardarPuntosJson(List<Punto2D> listaPuntos)
     {
         PuntosData data = new PuntosData();
         data.puntos = listaPuntos;
@@ -45,7 +42,7 @@ public static class Utilidades
         Debug.Log($"JSON generado:\n{json}");
     }
 
-    public static List<Estudiante> CargarEstudiantesJSON()
+    public static List<Estudiante> CargarEstudiantesJson()
     {
         string path = Path.Combine(Application.persistentDataPath, "estudiantes.json");
         
@@ -60,7 +57,7 @@ public static class Utilidades
         return new List<Estudiante>();
     }
 
-    public static List<Punto2D> CargarPuntosJSON()
+    public static List<Punto2D> CargarPuntosJson()
     {
         string path = Path.Combine(Application.persistentDataPath, "puntos.json");
         

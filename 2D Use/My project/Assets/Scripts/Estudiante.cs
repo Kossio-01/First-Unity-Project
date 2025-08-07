@@ -1,35 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace PackagesPesona
+[System.Serializable]
+public class Estudiante : Persona
 {
-    [System.Serializable]
-    public class Estudiante : Persona
+    [FormerlySerializedAs("CodeE")] [SerializeField] private string codeE;
+    [SerializeField] private string nameCarreraE;
+
+    public Estudiante() { }
+
+    public Estudiante(string codeE, string nameCarreraE)
     {
-        [SerializeField] private string CodeE;
-        [SerializeField] private string nameCarreraE;
-
-        public Estudiante() { }
-
-        public Estudiante(string codeE, string nameCarreraE)
-        {
-            this.CodeE = codeE;
-            this.nameCarreraE = nameCarreraE;
-        }
-
-        public Estudiante(string nameP, string mailP, string dirP) : base(nameP, mailP, dirP)
-        {
-        }
-
-        public Estudiante(string nameP, string mailP, string dirP, string codeE, string nameCarreraE) 
-            : base(nameP, mailP, dirP)
-        {
-            this.CodeE = codeE;
-            this.nameCarreraE = nameCarreraE;
-        }
-
-        public string CodeEProp { get => CodeE; set => CodeE = value; }
-        public string NameCarreraEProp { get => nameCarreraE; set => nameCarreraE = value; }
+        this.codeE = codeE;
+        this.nameCarreraE = nameCarreraE;
     }
+
+    public Estudiante(string nameP, string mailP, string dirP) : base(nameP, mailP, dirP)
+    {
+    }
+
+    public Estudiante(string nameP, string mailP, string dirP, string codeE, string nameCarreraE) 
+        : base(nameP, mailP, dirP)
+    {
+        this.codeE = codeE;
+        this.nameCarreraE = nameCarreraE;
+    }
+
+    public string CodeEProp { get => codeE; set => codeE = value; }
+    public string NameCarreraEProp { get => nameCarreraE; set => nameCarreraE = value; }
 }
