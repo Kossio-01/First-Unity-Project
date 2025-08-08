@@ -1,13 +1,21 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using System.Collections.Generic;
+using System.IO;
+
+[System.Serializable]
+public class CoordList
+{
+    public List<Vector2> coords = new List<Vector2>();
+}
 
 public class MousePanelTracker : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private RectTransform _rectTransform;
     private bool _isPointerOver;
-    public TMP_Text coordsText; 
-
+    public TMP_Text coordsText;
+    private CoordList _coordList = new CoordList();
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
@@ -15,7 +23,7 @@ public class MousePanelTracker : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     private void Update()
     {
-        if (_isPointerOver)
+        if (_isPointerOver && Input.GetMouseButtonDown(0))
         {
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
                 _rectTransform,
@@ -23,13 +31,9 @@ public class MousePanelTracker : MonoBehaviour, IPointerEnterHandler, IPointerEx
                 null,
                 out var localPoint
             );
+            _coordList.coords.Add(localPoint);
             if (coordsText != null)
-                coordsText.text = $"Coordenadas del cursor -> {localPoint}";
-        }
-        else
-        {
-            if (coordsText)
-                coordsText.text = "";
+                coordsText.text = $"Coordenadas guardadas: {localPoint}";
         }
     }
 
@@ -41,5 +45,15 @@ public class MousePanelTracker : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public void OnPointerExit(PointerEventData eventData)
     {
         _isPointerOver = false;
+    }
+
+    // Call this from your UI Button
+    public void SaveCoordsToJson()
+    {
+        string json = JsonUtility.ToJson(_coordList, true);
+        string path = Path.Combine(Application.persistentDataPath, "coords.json");
+        File.WriteAllText(path, json);
+        if (coordsText != null)
+            coordsText.text = $"Coordenadas guardadas en: {path}";
     }
 }
